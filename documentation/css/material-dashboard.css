@@ -5750,9 +5750,6 @@ h2.title {
 .sidebar[data-active-color="white"] .sidebar-moving-tab i {
   color: rgba(60, 72, 88, 0.8);
 }
-.sidebar[data-image]:after, .sidebar.has-image:after {
-  opacity: .77;
-}
 
 .main-panel {
   position: relative;
@@ -8817,9 +8814,7 @@ fieldset[disabled] .form-group.is-focused .togglebutton label {
 .full-page[filter-color="rose"].lock-page .form-group .form-control {
   background-image: linear-gradient(#e91e63, #e91e63), linear-gradient(#D2D2D2, #D2D2D2);
 }
-.full-page[data-image]:after {
-  opacity: .8;
-}
+
 .full-page > .content,
 .full-page > .footer {
   position: relative;

@@ -1,4 +1,4 @@
-import {Component, Input, OnInit, AfterViewInit, ChangeDetectionStrategy} from '@angular/core';
+import { Component, Input, OnInit, AfterViewInit, ChangeDetectionStrategy } from '@angular/core';
 import * as Chartist from 'chartist';
 
 export interface LegendItem {
@@ -67,12 +67,15 @@ export class MdChartComponent implements OnInit, AfterViewInit {
 
     switch (this.chartType) {
       case ChartType.Pie:
+        // tslint:disable-next-line:no-unused-expression
         new Chartist.Pie(`#${this.chartId}`, this.chartData, this.chartOptions, this.chartResponsive);
         break;
       case ChartType.Line:
+        // tslint:disable-next-line:no-unused-expression
         new Chartist.Line(`#${this.chartId}`, this.chartData, this.chartOptions, this.chartResponsive);
         break;
       case ChartType.Bar:
+        // tslint:disable-next-line:no-unused-expression
         new Chartist.Bar(`#${this.chartId}`, this.chartData, this.chartOptions, this.chartResponsive);
         break;
     }

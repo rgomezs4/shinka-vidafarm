@@ -75,10 +75,6 @@
         @include lock-page-input-color($brand-rose);
     }
 
-    &[data-image]:after{
-        opacity: .8;
-    }
-
     > .content,
     > .footer{
         position: relative;
