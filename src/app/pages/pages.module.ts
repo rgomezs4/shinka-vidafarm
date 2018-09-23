@@ -3,6 +3,7 @@ import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from '../app.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { UserService } from '../services/user.service'
 // import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { PagesRoutes } from './pages.routing';
@@ -15,11 +16,14 @@ import { LoginComponent } from './login/login.component';
     RouterModule.forChild(PagesRoutes),
     FormsModule,
     MaterialModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   declarations: [
     LoginComponent
-  ]
+  ],
+  providers: [
+    UserService
+  ],
 })
 
-export class PagesModule {}
+export class PagesModule { }

@@ -16,7 +16,7 @@
                       <i class="material-icons">person</i>
                     </span>
                   </div>
-                  <input type="text" class="form-control" placeholder="Usuario...">
+                  <input type="text" [(ngModel)]="username" name="username" class="form-control" placeholder="Usuario...">
                 </div>
               </span>
               <span class="bmd-form-group">
@@ -26,15 +26,21 @@
                       <i class="material-icons">lock_outline</i>
                     </span>
                   </div>
-                  <input type="password" class="form-control" placeholder="Contraseña...">
+                  <input type="password" [(ngModel)]="password" name="password" class="form-control" placeholder="Contraseña...">
                 </div>
               </span>
             </div>
             <div class="card-footer justify-content-center">
-              <a href="#pablo" class="btn btn-info btn-link btn-lg">Iniciar</a>
+              <a (click)="login()" class="btn btn-info btn-link btn-lg">Iniciar</a>
             </div>
           </div>
         </form>
+        <div class="alert alert-danger alert-with-icon" *ngIf="showError">
+          <i class="material-icons" data-notify="icon">error_outline</i>
+          <button (click)="hideError()" mat-button type="button" class="close" data-dismiss="alert" aria-label="Close"> <i class="material-icons">close</i></button>
+          <span data-notify="message">
+            <b>Error:</b> {{errorMessage}} </span>
+        </div>
       </div>
     </div>
   </div>
