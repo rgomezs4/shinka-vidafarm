@@ -18,6 +18,13 @@ export const AppRoutes: Routes = [
       }, {
         path: '',
         loadChildren: './userpage/user.module#UserModule'
+      }, {
+        path: '',
+        loadChildren: './create-sku/create-sku.module#CreateSkuModule'
+      },
+      {
+        path: '',
+        loadChildren: './providers/providers.module#ProvidersModule'
       }
     ]
   }, {
