@@ -83,6 +83,7 @@ export class LoginComponent implements OnInit, OnDestroy {
             }
 
             localStorage.setItem("user", JSON.stringify(u));
+            localStorage.setItem("userId", u.UserCode);
             this.router.navigate(["dashboard"])
         } catch (error) {
             this.showError = true;

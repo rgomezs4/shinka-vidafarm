@@ -1,6 +1,7 @@
 import { Routes } from "@angular/router";
 import { ListProvidersComponent } from "./list-providers/list-providers.component";
 import { EditProviderComponent } from "./edit-provider/edit-provider.component";
+import { CreateProviderComponent } from "./create-provider/create-provider.component";
 
 export const ProviderRoutes: Routes = [
     {
@@ -13,6 +14,10 @@ export const ProviderRoutes: Routes = [
             {
                 path: "edit/:id",
                 component: EditProviderComponent
+            },
+            {
+                path: "new",
+                component: CreateProviderComponent
             }
         ]
     }

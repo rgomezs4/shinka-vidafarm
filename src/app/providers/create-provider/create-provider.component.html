@@ -1,0 +1,86 @@
+<div class="main-content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card ">
+                        <div class="card-header card-header-info card-header-icon">
+                            <div class="card-icon">
+                                <i class="material-icons">person</i>
+                            </div>
+                            <h4 class="card-title">Nuevo Proveedor</h4>
+                        </div>
+                        <div class="card-body ">
+                            <form (ngSubmit)="saveChanges()">
+                                <div class="row">
+                                    <label class="col-sm-2 col-form-label">Código</label>
+                                    <div class="col-sm-10">
+                                        <mat-form-field class="example-full-width">
+                                            <input matInput type="text" disabled [value]="provider.ProviderCode">
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <label class="col-sm-2 col-form-label">Nombre</label>
+                                    <div class="col-sm-10">
+                                        <mat-form-field class="example-full-width">
+                                            <input matInput name="name" type="text" [(ngModel)]="provider.Name">
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <label class="col-sm-2 col-form-label">NIT</label>
+                                    <div class="col-sm-10">
+                                        <mat-form-field class="example-full-width">
+                                            <input matInput type="text" name="nit" [(ngModel)]="provider.NIT">
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <label class="col-sm-2 col-form-label">Telefono</label>
+                                    <div class="col-sm-10">
+                                        <mat-form-field class="example-full-width">
+                                            <input matInput type="text" name="phone" [(ngModel)]="provider.Phone">
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <label class="col-sm-2 col-form-label">Dirección</label>
+                                    <div class="col-sm-10">
+                                        <mat-form-field class="example-full-width">
+                                            <input matInput type="text" name="address" [(ngModel)]="provider.Address">
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <label class="col-sm-2 col-form-label">Persona de Contacto</label>
+                                    <div class="col-sm-10">
+                                        <mat-form-field class="example-full-width">
+                                            <input matInput type="text" name="contact" [(ngModel)]="provider.ContactName">
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <label class="col-sm-2 col-form-label">Lista de Precios</label>
+                                    <div class="col-sm-10">
+                                        <mat-form-field>
+                                            <mat-select placeholder="Lista de Precios" name="pricelist" [(ngModel)]="provider.PriceListCode">
+                                                <mat-option *ngFor="let pl of priceLists" [value]="pl.PriceListCode">
+                                                    {{ pl.Description }}
+                                                </mat-option>
+                                            </mat-select>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                                <div class="row text-right">
+                                    <div class="col-sm-10"></div>
+                                    <div class="col-sm-12">
+                                        <button type="submit" mat-raised-button class="btn btn-info">Guardar Cambios</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

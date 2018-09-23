@@ -11,6 +11,8 @@ import { ListProvidersComponent } from './list-providers/list-providers.componen
 import { ProviderService } from '../services/provider.service';
 import { EditProviderComponent } from './edit-provider/edit-provider.component';
 import { PriceListService } from '../services/pricelist.service';
+import { CreateProviderComponent } from './create-provider/create-provider.component';
+import { SeqService } from '../services/seq.service';
 
 @NgModule({
     imports: [
@@ -25,11 +27,13 @@ import { PriceListService } from '../services/pricelist.service';
     ],
     declarations: [
         ListProvidersComponent,
-        EditProviderComponent
+        EditProviderComponent,
+        CreateProviderComponent
     ],
     providers: [
         ProviderService,
-        PriceListService
+        PriceListService,
+        SeqService
     ]
 })
 

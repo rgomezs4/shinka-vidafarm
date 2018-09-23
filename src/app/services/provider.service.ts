@@ -16,6 +16,9 @@ export class ProviderService {
     }
 
     update(id: string, provider: any): Promise<any> {
+        const date = new Date()
+        provider.LastUpdated = date.toISOString();
+        provider.LastUpdatedBy = localStorage.getItem("userId")
         const httpOptions = {
             headers: new HttpHeaders({
                 "Content-Type": "application/json"
@@ -25,6 +28,11 @@ export class ProviderService {
     }
 
     insert(provider: any): Promise<any> {
+        const date = new Date()
+        provider.LastUpdate = date.toISOString();
+        provider.LastUpdateBy = localStorage.getItem("userId")
+        provider.CreatedDate = date.toISOString();
+        provider.CreatedBy = localStorage.getItem("userId")
         const httpOptions = {
             headers: new HttpHeaders({
                 "Content-Type": "application/json"

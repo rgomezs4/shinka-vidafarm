@@ -1,24 +1,25 @@
 import { Component, OnInit } from "@angular/core";
-import { Router, ActivatedRoute } from "@angular/router";
+import { Router } from "@angular/router";
 import { PriceListService } from "../../services/pricelist.service";
 import { ProviderService } from "../../services/provider.service";
 import * as _ from "lodash";
+import { SeqService } from "../../services/seq.service";
 
 declare const $: any;
 
 @Component({
-    selector: "app-edit-provider-cmp",
-    templateUrl: "./edit-provider.component.html"
+    selector: "app-create-provider-cmp",
+    templateUrl: "./create-provider.component.html"
 })
-export class EditProviderComponent implements OnInit {
+export class CreateProviderComponent implements OnInit {
     provider: any;
     priceLists: Array<any>;
 
     constructor(
         private providerService: ProviderService,
         private priceListService: PriceListService,
-        private router: Router,
-        private route: ActivatedRoute
+        private seqService: SeqService,
+        private router: Router
     ) {
         this.provider = {
             ProviderCode: "",
@@ -40,13 +41,31 @@ export class EditProviderComponent implements OnInit {
 
     async ngOnInit() {
         try {
-            const providerId = this.route.snapshot.paramMap.get("id");
-
-            this.provider = await this.providerService.getById(providerId);
             this.priceLists = await this.priceListService.getAll();
         } catch (error) {
             this.showMessage("danger", error, "top", "right");
             this.router.navigate(["provider"]);
+        }
+    }
+
+    async saveChanges() {
+        try {
+            const seq = await this.seqService.getNext("Provider");
+            const code = "PR-" + (seq.current_number / 1000000).toFixed(6).toString().split('.')[1]
+            this.provider.ProviderCode = code;
+            await this.providerService.insert(
+                this.provider
+            );
+            this.showMessage(
+                "success",
+                "Proveedor creado exitosamente.",
+                "top",
+                "right"
+            );
+            this.router.navigate(["provider"]);
+        } catch (error) {
+            this.provider.ProviderCode = "";
+            this.showMessage("danger", error.message, "top", "right");
         }
     }
 
@@ -64,34 +83,5 @@ export class EditProviderComponent implements OnInit {
                 }
             }
         );
-    }
-
-    async saveChanges() {
-        try {
-            const payload = _.clone(this.provider);
-            delete payload.ProviderCode;
-            const req = await this.providerService.update(
-                this.provider.ProviderCode,
-                payload
-            );
-
-            if (!req) {
-                this.showMessage(
-                    "danger",
-                    "Error al actualizar el proveedor.",
-                    "top",
-                    "right"
-                );
-                return;
-            }
-            this.showMessage(
-                "success",
-                "Proveedor actualizado exitosamente.",
-                "top",
-                "right"
-            );
-        } catch (error) {
-            this.showMessage("danger", error, "top", "right");
-        }
     }
 }

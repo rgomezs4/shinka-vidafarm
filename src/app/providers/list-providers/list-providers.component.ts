@@ -18,7 +18,8 @@ export class ListProvidersComponent implements OnInit, AfterViewInit {
     providers: Array<any> = [];
     public dataTable: DataTable;
 
-    constructor(private providerService: ProviderService, private router: Router) { }
+    constructor(private providerService: ProviderService, private router: Router) {
+     }
 
     async ngOnInit() {
         try {
@@ -66,5 +67,9 @@ export class ListProvidersComponent implements OnInit, AfterViewInit {
         });
 
         $('.card .material-datatables label').addClass('form-group');
+    }
+
+    gotoCreate() {
+        this.router.navigate(['/provider/new'])
     }
 }
