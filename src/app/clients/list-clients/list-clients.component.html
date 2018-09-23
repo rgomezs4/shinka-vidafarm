@@ -7,12 +7,12 @@
                         <div class="card-icon">
                             <i class="material-icons">list</i>
                         </div>
-                        <h4 class="card-title">Proveedores</h4>
+                        <h4 class="card-title">Clientes</h4>
                     </div>
                     <div class="card-body">
                         <div class="toolbar text-right">
                             <button (click)="gotoCreate()" mat-raised-button class="btn btn-link btn-success text-right">
-                                <i class="material-icons">add</i> Nuevo Proveedor
+                                <i class="material-icons">add</i> Nuevo Cliente
                             </button>
                             <!--        Here you can write extra buttons/actions for the toolbar              -->
                         </div>
@@ -28,7 +28,8 @@
                                         <th>{{ dataTable.headerRow[4] }}</th>
                                         <th>{{ dataTable.headerRow[5] }}</th>
                                         <th>{{ dataTable.headerRow[6] }}</th>
-                                        <th class="disabled-sorting text-right">{{ dataTable.headerRow[7] }}</th>
+                                        <th>{{ dataTable.headerRow[7] }}</th>
+                                        <th class="disabled-sorting text-right">{{ dataTable.headerRow[8] }}</th>
                                     </tr>
                                 </thead>
                                 <tfoot>
@@ -40,7 +41,8 @@
                                         <th>{{ dataTable.footerRow[4] }}</th>
                                         <th>{{ dataTable.footerRow[5] }}</th>
                                         <th>{{ dataTable.footerRow[6] }}</th>
-                                        <th class="text-right">{{ dataTable.footerRow[7] }}</th>
+                                        <th>{{ dataTable.footerRow[7] }}</th>
+                                        <th class="text-right">{{ dataTable.footerRow[8] }}</th>
                                     </tr>
                                 </tfoot>
                                 <tbody>
@@ -51,7 +53,8 @@
                                         <td>{{row[3]}}</td>
                                         <td>{{row[4]}}</td>
                                         <td>{{row[5]}}</td>
-                                        <td class="text-right">{{row[6]}}</td>
+                                        <td class="text-right">Q. {{row[6] | number:'4.2-2'}}</td>
+                                        <td class="text-right">{{row[7]}}</td>
                                         <td class="text-right">
                                             <a href="#" class="btn btn-link btn-warning btn-just-icon edit"><i class="material-icons">edit</i></a>
                                         </td>

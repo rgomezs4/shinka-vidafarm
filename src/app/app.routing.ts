@@ -25,6 +25,10 @@ export const AppRoutes: Routes = [
       {
         path: '',
         loadChildren: './providers/providers.module#ProvidersModule'
+      },
+      {
+        path: '',
+        loadChildren: './clients/clients.module#ClientsModule'
       }
     ]
   }, {
