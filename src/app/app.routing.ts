@@ -29,6 +29,10 @@ export const AppRoutes: Routes = [
       {
         path: '',
         loadChildren: './clients/clients.module#ClientsModule'
+      },
+      {
+        path: '',
+        loadChildren: './skus/sku.module#SkusModule'
       }
     ]
   }, {

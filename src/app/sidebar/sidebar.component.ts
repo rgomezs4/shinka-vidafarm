@@ -29,6 +29,12 @@ export const ROUTES: RouteInfo[] = [
         icontype: "dashboard"
     },
     {
+        path: "/sku",
+        title: "Productos",
+        type: "link",
+        icontype: "ballot"
+    },
+    {
         path: "/client",
         title: "Clientes",
         type: "link",
@@ -39,21 +45,6 @@ export const ROUTES: RouteInfo[] = [
         title: "Proveedores",
         type: "link",
         icontype: "group"
-    },
-    {
-        path: "/pages",
-        title: "Pages",
-        type: "sub",
-        icontype: "image",
-        collapse: "pages",
-        children: [
-            { path: "pricing", title: "Pricing", ab: "P" },
-            { path: "timeline", title: "Timeline Page", ab: "TP" },
-            { path: "login", title: "Login Page", ab: "LP" },
-            { path: "register", title: "Register Page", ab: "RP" },
-            { path: "lock", title: "Lock Screen Page", ab: "LSP" },
-            { path: "user", title: "User Page", ab: "UP" }
-        ]
     }
 ];
 @Component({
