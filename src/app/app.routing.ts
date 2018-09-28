@@ -33,6 +33,10 @@ export const AppRoutes: Routes = [
       {
         path: '',
         loadChildren: './skus/sku.module#SkusModule'
+      },
+      {
+        path: '',
+        loadChildren: './config/config.module#ConfigModule'
       }
     ]
   }, {

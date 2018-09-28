@@ -45,6 +45,17 @@ export const ROUTES: RouteInfo[] = [
         title: "Proveedores",
         type: "link",
         icontype: "group"
+    },
+    {
+        path: "/config",
+        title: "Configuracion",
+        type: "sub",
+        icontype: "settings",
+        collapse: "configuracion",
+        children: [
+            {path: "price_list", title: "Listas de Precios", ab: "LP"},
+            {path: "correlative", title: "Correlativos Facturas", ab: "CF"}
+        ]
     }
 ];
 @Component({
