@@ -9,6 +9,11 @@ import { MaterialModule } from '../app.module';
 import { ConfigRoutes } from './config.routing';
 import { PriceListService } from '../services/pricelist.service';
 import { CorrelativeService } from '../services/correlative.service';
+import { PriceListComponent } from './price-list/price-list.component';
+import { CorrelativeComponent } from './correlative/correlative.component';
+import { NewCorrelativeComponent } from './new-correlative/new-correlative.component';
+import { NewPriceListComponent } from './new-price-list/new-price-list.component';
+import { EditPriceListComponent } from './edit-price-list/edit-price-list.component';
 
 
 @NgModule({
@@ -23,7 +28,11 @@ import { CorrelativeService } from '../services/correlative.service';
         SelectModule
     ],
     declarations: [
-
+        PriceListComponent,
+        CorrelativeComponent,
+        NewCorrelativeComponent,
+        NewPriceListComponent,
+        EditPriceListComponent
     ],
     providers: [
         PriceListService,

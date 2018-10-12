@@ -1,0 +1,58 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card ">
+                    <div class="card-header card-header-info card-header-icon">
+                        <div class="card-icon">
+                            <i class="material-icons">plus_one</i>
+                        </div>
+                        <h4 class="card-title">Nuevo Correlative</h4>
+                    </div>
+                    <div class="card-body ">
+                        <form (ngSubmit)="saveChanges()">
+                            <div class="row">
+                                <label class="col-sm-2 col-form-label">Serie</label>
+                                <div class="col-sm-10">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput name="serie" type="text" [(ngModel)]="correlative.DocSerie">
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <label class="col-sm-2 col-form-label">Primero</label>
+                                <div class="col-sm-10">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput name="min" type="number" step="1" [(ngModel)]="correlative.Min">
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <label class="col-sm-2 col-form-label">Ultimo</label>
+                                <div class="col-sm-10">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput name="max" type="number" step="1" [(ngModel)]="correlative.Max">
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <label class="col-sm-2 col-form-label">Actual</label>
+                                <div class="col-sm-10">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput name="current" type="number" step="1" [(ngModel)]="correlative.Current">
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="row text-right">
+                                <div class="col-sm-10"></div>
+                                <div class="col-sm-12">
+                                    <button type="submit" mat-raised-button class="btn btn-info">Guardar Cambios</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

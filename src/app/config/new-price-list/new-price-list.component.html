@@ -1,0 +1,57 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card ">
+                    <div class="card-header card-header-info card-header-icon">
+                        <div class="card-icon">
+                            <i class="material-icons">money</i>
+                        </div>
+                        <h4 class="card-title">Nueva Lista de Precios</h4>
+                    </div>
+                    <div class="card-body ">
+                        <form (ngSubmit)="saveChanges()">
+                            <div class="row">
+                                <label class="col-sm-2 col-form-label">Descripcion</label>
+                                <div class="col-sm-10">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput name="descripcion" type="text" [(ngModel)]="priceList.Description">
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <label class="col-sm-2 col-form-label">Factor</label>
+                                <div class="col-sm-10">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput name="factor" type="number" step="0.01" [(ngModel)]="priceList.Factor">
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <label class="col-sm-2 col-form-label">Tipo</label>
+                                <div class="col-sm-10">
+                                    <mat-form-field>
+                                        <mat-select placeholder="Lista de Precios" name="type" [(ngModel)]="priceList.Type">
+                                            <mat-option value="1">
+                                                Compras
+                                            </mat-option>
+                                            <mat-option value="2">
+                                                Ventas
+                                            </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="row text-right">
+                                <div class="col-sm-10"></div>
+                                <div class="col-sm-12">
+                                    <button type="submit" mat-raised-button class="btn btn-info">Guardar Cambios</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,62 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-info card-header-icon">
+                        <div class="card-icon">
+                            <i class="material-icons">list</i>
+                        </div>
+                        <h4 class="card-title">Listas de Precios</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="toolbar text-right">
+                            <button (click)="gotoCreate()" mat-raised-button class="btn btn-link btn-success text-right">
+                                <i class="material-icons">add</i> Nueva Lista de Precios
+                            </button>
+                            <!--        Here you can write extra buttons/actions for the toolbar              -->
+                        </div>
+                        <div class="material-datatables">
+                            <table id="datatables" class="table table-striped table-no-bordered table-hover"
+                                cellspacing="0" width="100%" style="width:100%">
+                                <thead>
+                                    <tr>
+                                        <th>{{ dataTable.headerRow[0] }}</th>
+                                        <th>{{ dataTable.headerRow[1] }}</th>
+                                        <th>{{ dataTable.headerRow[2] }}</th>
+                                        <th>{{ dataTable.headerRow[3] }}</th>
+                                        <th class="disabled-sorting text-right">{{ dataTable.headerRow[4] }}</th>
+                                    </tr>
+                                </thead>
+                                <tfoot>
+                                    <tr>
+                                        <th>{{ dataTable.footerRow[0] }}</th>
+                                        <th>{{ dataTable.footerRow[1] }}</th>
+                                        <th>{{ dataTable.footerRow[2] }}</th>
+                                        <th>{{ dataTable.footerRow[3] }}</th>
+                                        <th class="text-right">{{ dataTable.footerRow[4] }}</th>
+                                    </tr>
+                                </tfoot>
+                                <tbody>
+                                    <tr *ngFor="let row of dataTable.dataRows">
+                                        <td>{{row[0]}}</td>
+                                        <td>{{row[1]}}</td>
+                                        <td>{{row[2]}}</td>
+                                        <td>{{row[3]}}</td>
+                                        <td class="text-right">
+                                            <a class="btn btn-link btn-warning btn-just-icon edit" (click)="gotoEdit(row[0])"><i class="material-icons">edit</i></a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <!-- end content-->
+                </div>
+                <!--  end card  -->
+            </div>
+            <!-- end col-md-12 -->
+        </div>
+        <!-- end row -->
+    </div>
+</div>
