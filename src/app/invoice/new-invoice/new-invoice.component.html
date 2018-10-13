@@ -1,0 +1,139 @@
+<div class="main-content">
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">Encabezado</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <label class="col-sm-2 col-form-label">Serie</label>
+                            <div class="col-sm-4">
+                                <mat-select placeholder="Serie" name="serie" [(ngModel)]="selectedSerie">
+                                    <mat-option *ngFor="let s of series" [value]="s">
+                                        {{ s.DocSerie }}
+                                    </mat-option>
+                                </mat-select>
+                            </div>
+                            <label class="col-sm-2 col-form-label">Numero</label>
+                            <div class="col-sm-4 col-form-label">
+                                {{ selectedSerie.Current+1 }}
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <label class="col-sm-2 col-form-label">Buscar Cliente</label>
+                            <div class="col-sm-10">
+                                <mat-form-field class="example-full-width">
+                                    <input matInput name="searchClient" type="text" (focus)="allowSearchClient()"
+                                        (focusout)="searchClient()" (keyup.enter)="searchClient()" [(ngModel)]="criteria">
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label class="col-sm-2 col-form-label">Codigo Cliente</label>
+                            <div class="col-sm-10">
+                                <mat-form-field class="example-full-width">
+                                    <input matInput name="name" type="text" [disabled]="true" [(ngModel)]="client.ClientCode">
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label class="col-sm-2 col-form-label">Nombre</label>
+                            <div class="col-sm-10">
+                                <mat-form-field class="example-full-width">
+                                    <input matInput name="name" type="text" [(ngModel)]="client.Name">
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label class="col-sm-2 col-form-label">NIT</label>
+                            <div class="col-sm-10">
+                                <mat-form-field class="example-full-width">
+                                    <input matInput name="nit" type="text" [(ngModel)]="client.NIT">
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label class="col-sm-2 col-form-label">Direccion</label>
+                            <div class="col-sm-10">
+                                <mat-form-field class="example-full-width">
+                                    <input matInput name="address" type="text" [(ngModel)]="client.Address">
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <label class="col-sm-2 col-form-label">Total</label>
+                            <div class="col-sm-10 col-form-label">
+                                {{ total | currency:'Q'}}
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row text-right">
+                            <div class="col-sm-10"></div>
+                            <div class="col-sm-12">
+                                <button type="submit" (click)="clean()" mat-raised-button
+                                    class="btn btn-danger">Limpiar</button>
+                                <button type="submit" [disabled]="!canSave()" (click)="saveChanges()" mat-raised-button
+                                    class="btn btn-info">Guardar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">Detalle</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <label class="col-sm-1 col-form-label">Producto</label>
+                            <div class="col-sm-11">
+                                <mat-form-field class="example-full-width">
+                                    <input matInput name="product" type="text" (focus)="allowSearchProduct()"
+                                        (focusout)="searchProduct()" (keyup.enter)="searchProduct()" [(ngModel)]="barcode">
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th class="text-center">#</th>
+                                        <th>Codigo Producto</th>
+                                        <th>Descripcion</th>
+                                        <th>Cantidad</th>
+                                        <th class="text-right">Precio</th>
+                                        <th class="text-right">Subtotal</th>
+                                        <th class="text-right"></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let d of detail; let i = index;">
+                                        <td class="text-center">{{ i+1 }}</td>
+                                        <td>{{d.SkuCode}}</td>
+                                        <td>{{d.Description}}</td>
+                                        <td><input matInput type="number" step="1" min="1" [(ngModel)]="d.Quantity"
+                                                (ngModelChange)="calcTotal($event, i)"></td>
+                                        <td class="text-right">{{d.Price | currency:'Q'}}</td>
+                                        <td class="text-right">{{d.LineTotal | currency:'Q'}}</td>
+                                        <td class="td-actions text-right">
+                                            <button type="button" rel="tooltip" class="btn btn-danger" [disabled]="created" (click)="removeDetail(i)">
+                                                <i class="material-icons">close</i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

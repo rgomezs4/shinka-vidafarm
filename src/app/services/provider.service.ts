@@ -5,7 +5,7 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 export class ProviderService {
     url = "http://localhost:3000/api/v1/provider";
 
-    constructor(private http: HttpClient) { }
+    constructor(private http: HttpClient) {}
 
     getAll(): Promise<any> {
         return this.http.get(this.url).toPromise();
@@ -16,28 +16,34 @@ export class ProviderService {
     }
 
     update(id: string, provider: any): Promise<any> {
-        const date = new Date()
+        const date = new Date();
         provider.LastUpdate = date.toISOString();
-        provider.LastUpdateBy = localStorage.getItem("userId")
+        provider.LastUpdateBy = localStorage.getItem("userId");
         const httpOptions = {
             headers: new HttpHeaders({
                 "Content-Type": "application/json"
             })
         };
-        return this.http.put(`${this.url}/${id}`, provider, httpOptions).toPromise();
+        return this.http
+            .put(`${this.url}/${id}`, provider, httpOptions)
+            .toPromise();
     }
 
     insert(provider: any): Promise<any> {
-        const date = new Date()
+        const date = new Date();
         provider.LastUpdate = date.toISOString();
-        provider.LastUpdateBy = localStorage.getItem("userId")
+        provider.LastUpdateBy = localStorage.getItem("userId");
         provider.CreatedDate = date.toISOString();
-        provider.CreatedBy = localStorage.getItem("userId")
+        provider.CreatedBy = localStorage.getItem("userId");
         const httpOptions = {
             headers: new HttpHeaders({
                 "Content-Type": "application/json"
             })
         };
         return this.http.post(this.url, provider, httpOptions).toPromise();
+    }
+
+    search(criteria: any): Promise<any> {
+        return this.http.get(`${this.url}/search/${criteria}`).toPromise();
     }
 }

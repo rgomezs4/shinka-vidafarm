@@ -40,4 +40,8 @@ export class ClientService {
         };
         return this.http.post(this.url, client, httpOptions).toPromise();
     }
+
+    search(criteria: any): Promise<any> {
+        return this.http.get(`${this.url}/search/${criteria}`).toPromise();
+    }
 }

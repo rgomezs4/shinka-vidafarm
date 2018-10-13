@@ -29,6 +29,18 @@ export const ROUTES: RouteInfo[] = [
         icontype: "dashboard"
     },
     {
+        path: "/invoice",
+        title: "Facturacion",
+        type: "link",
+        icontype: "credit_card"
+    },
+    {
+        path: "/purchase",
+        title: "Ingreso de Mercaderia",
+        type: "link",
+        icontype: "directions_boat"
+    },
+    {
         path: "/sku",
         title: "Productos",
         type: "link",

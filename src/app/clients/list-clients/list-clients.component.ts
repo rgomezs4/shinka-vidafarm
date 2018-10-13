@@ -1,6 +1,6 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
-import { ClientService } from '../../services/client.service';
-import { Router } from '@angular/router';
+import { Component, OnInit, AfterViewInit } from "@angular/core";
+import { ClientService } from "../../services/client.service";
+import { Router } from "@angular/router";
 
 declare interface DataTable {
     headerRow: string[];
@@ -19,59 +19,100 @@ export class ListClientsComponent implements OnInit, AfterViewInit {
     public dataTable: DataTable;
 
     constructor(private clientService: ClientService, private router: Router) {
-     }
+        this.dataTable = {
+            headerRow: [
+                "Codigo de Cliente",
+                "Cliente",
+                "Documento",
+                "Fecha",
+                "Total",
+                "Acciones"
+            ],
+            footerRow: [
+                "Codigo de Cliente",
+                "Cliente",
+                "Documento",
+                "Fecha",
+                "Total",
+                "Acciones"
+            ],
+            dataRows: [[]]
+        };
+    }
 
     async ngOnInit() {
         try {
             this.clients = await this.clientService.getAll();
 
             const data = this.clients.map(c => {
-                const clt = [c.ClientCode, c.Name, c.NIT, c.Phone, c.Address, c.ContactName, c.CreditLimit, c.PriceListCode];
+                const clt = [
+                    c.ClientCode,
+                    c.Name,
+                    c.NIT,
+                    c.Phone,
+                    c.Address,
+                    c.ContactName,
+                    c.CreditLimit,
+                    c.PriceListCode
+                ];
                 return clt;
             });
 
             this.dataTable = {
-                headerRow: ['Codigo', 'Nombre', 'NIT', 'Telefono', 'Direccion',
-                            'Persona de Contacto', 'Limite de Credito', 'Lista de Precios', 'Acciones'],
-                footerRow: ['Codigo', 'Nombre', 'NIT', 'Telefono', 'Direccion',
-                            'Persona de Contacto', 'Limite de Credito', 'Lista de Precios', 'Acciones'],
+                headerRow: [
+                    "Codigo",
+                    "Nombre",
+                    "NIT",
+                    "Telefono",
+                    "Direccion",
+                    "Persona de Contacto",
+                    "Limite de Credito",
+                    "Lista de Precios",
+                    "Acciones"
+                ],
+                footerRow: [
+                    "Codigo",
+                    "Nombre",
+                    "NIT",
+                    "Telefono",
+                    "Direccion",
+                    "Persona de Contacto",
+                    "Limite de Credito",
+                    "Lista de Precios",
+                    "Acciones"
+                ],
 
                 dataRows: data
             };
-        } catch (error) {
-        }
+        } catch (error) {}
     }
 
     ngAfterViewInit() {
         const ctx = this;
-        $('#datatables').DataTable({
-            "pagingType": "full_numbers",
-            "lengthMenu": [
-                [10, 25, 50, -1],
-                [10, 25, 50, "All"]
-            ],
+        $("#datatables").DataTable({
+            pagingType: "full_numbers",
+            lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "All"]],
             responsive: true,
             language: {
                 search: "_INPUT_",
-                searchPlaceholder: "Buscar cliente",
+                searchPlaceholder: "Buscar cliente"
             }
-
         });
 
-        const table = $('#datatables').DataTable();
+        const table = $("#datatables").DataTable();
 
         // Edit record
-        table.on('click', '.edit', function (e) {
-            const $tr = $(this).closest('tr');
+        table.on("click", ".edit", function(e) {
+            const $tr = $(this).closest("tr");
             const data = table.row($tr).data();
-            ctx.router.navigate(['/client/edit', data[0]])
+            ctx.router.navigate(["/client/edit", data[0]]);
             e.preventDefault();
         });
 
-        $('.card .material-datatables label').addClass('form-group');
+        $(".card .material-datatables label").addClass("form-group");
     }
 
     gotoCreate() {
-        this.router.navigate(['/client/new'])
+        this.router.navigate(["/client/new"]);
     }
 }

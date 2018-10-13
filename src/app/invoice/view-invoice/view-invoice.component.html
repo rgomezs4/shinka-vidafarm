@@ -1,0 +1,99 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">Encabezado</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <label class="col-sm-2 col-form-label">Documento</label>
+                            <div class="col-sm-4">
+                                <mat-form-field class="example-full-width">
+                                    <input matInput name="document" type="text" [disabled]="true" [(ngModel)]="documento">
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <label class="col-sm-2 col-form-label">Codigo Cliente</label>
+                            <div class="col-sm-10">
+                                <mat-form-field class="example-full-width">
+                                    <input matInput name="name" type="text" [disabled]="true" [(ngModel)]="invoice.ClientCode">
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label class="col-sm-2 col-form-label">Nombre</label>
+                            <div class="col-sm-10">
+                                <mat-form-field class="example-full-width">
+                                    <input matInput name="name" type="text" [disabled]="true" [(ngModel)]="invoice.ClientName">
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label class="col-sm-2 col-form-label">NIT</label>
+                            <div class="col-sm-10">
+                                <mat-form-field class="example-full-width">
+                                    <input matInput name="nit" type="text" [disabled]="true" [(ngModel)]="invoice.NIT">
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label class="col-sm-2 col-form-label">Direccion</label>
+                            <div class="col-sm-10">
+                                <mat-form-field class="example-full-width">
+                                    <input matInput name="address" type="text" [disabled]="true" [(ngModel)]="invoice.Address">
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <label class="col-sm-2 col-form-label">Total</label>
+                            <div class="col-sm-10 col-form-label">
+                                {{ invoice.DocTotalAfterTax | currency:'Q'}}
+                            </div>
+                        </div>
+                        <hr>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">Detalle</h4>
+                    </div>
+                    <div class="card-body">
+                        <hr>
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th class="text-center">#</th>
+                                        <th>Codigo Producto</th>
+                                        <th>Descripcion</th>
+                                        <th>Cantidad</th>
+                                        <th class="text-right">Precio</th>
+                                        <th class="text-right">Subtotal</th>
+                                        <th class="text-right"></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let d of invoice.detail; let i = index;">
+                                        <td class="text-center">{{ i+1 }}</td>
+                                        <td>{{d.SkuCode}}</td>
+                                        <td>{{d.Description}}</td>
+                                        <td>{{d.Quantity}}</td>
+                                        <td class="text-right">{{d.Price | currency:'Q'}}</td>
+                                        <td class="text-right">{{d.LineTotal | currency:'Q'}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

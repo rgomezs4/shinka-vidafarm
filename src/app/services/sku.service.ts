@@ -15,6 +15,10 @@ export class SkuService {
         return this.http.get(`${this.url}/${id}`).toPromise();
     }
 
+    getByBarcode(barcode: string): Promise<any> {
+        return this.http.get(`${this.url}/barcode/${barcode}`).toPromise();
+    }
+
     update(id: string, sku: any): Promise<any> {
         const date = new Date()
         sku.LastUpdated = date.toISOString();
