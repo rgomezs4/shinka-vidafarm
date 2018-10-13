@@ -19,25 +19,6 @@ export class ListClientsComponent implements OnInit, AfterViewInit {
     public dataTable: DataTable;
 
     constructor(private clientService: ClientService, private router: Router) {
-        this.dataTable = {
-            headerRow: [
-                "Codigo de Cliente",
-                "Cliente",
-                "Documento",
-                "Fecha",
-                "Total",
-                "Acciones"
-            ],
-            footerRow: [
-                "Codigo de Cliente",
-                "Cliente",
-                "Documento",
-                "Fecha",
-                "Total",
-                "Acciones"
-            ],
-            dataRows: [[]]
-        };
     }
 
     async ngOnInit() {

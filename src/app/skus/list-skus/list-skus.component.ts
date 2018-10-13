@@ -19,25 +19,6 @@ export class ListSkusComponent implements OnInit, AfterViewInit {
     public dataTable: DataTable;
 
     constructor(private skuService: SkuService, private router: Router) {
-        this.dataTable = {
-            headerRow: [
-                "Codigo de Cliente",
-                "Cliente",
-                "Documento",
-                "Fecha",
-                "Total",
-                "Acciones"
-            ],
-            footerRow: [
-                "Codigo de Cliente",
-                "Cliente",
-                "Documento",
-                "Fecha",
-                "Total",
-                "Acciones"
-            ],
-            dataRows: [[]]
-        };
     }
 
     async ngOnInit() {

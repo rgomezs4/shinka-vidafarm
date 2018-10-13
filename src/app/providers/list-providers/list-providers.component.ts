@@ -22,25 +22,6 @@ export class ListProvidersComponent implements OnInit, AfterViewInit {
         private providerService: ProviderService,
         private router: Router
     ) {
-        this.dataTable = {
-            headerRow: [
-                "Codigo de Cliente",
-                "Cliente",
-                "Documento",
-                "Fecha",
-                "Total",
-                "Acciones"
-            ],
-            footerRow: [
-                "Codigo de Cliente",
-                "Cliente",
-                "Documento",
-                "Fecha",
-                "Total",
-                "Acciones"
-            ],
-            dataRows: [[]]
-        };
     }
 
     async ngOnInit() {
